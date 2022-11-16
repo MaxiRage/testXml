@@ -1,0 +1,25 @@
+
+spring:
+  # PostgreSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testXml
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: admin
+
+  # JPA
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: false
+    show-sql: false
+
+  # Liquibase
+  liquibase:
+    change-log: classpath:liquibase/db.changelog_master.yaml
+    url: jdbc:postgresql://localhost:5432/testXml
+    user: postgres
+    password: admin
