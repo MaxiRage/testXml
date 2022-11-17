@@ -1,7 +1,7 @@
 package com.example.testXml.Service;
 
-import com.example.testXml.Entity.Field;
-import com.example.testXml.Repository.FieldRepository;
+import com.example.testXml.Entity.Entry;
+import com.example.testXml.Repository.EntryRepository;
 import com.example.testXml.Service.Impl.EntriesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class EntriesServiceImpl implements EntriesService {
 
-    private final FieldRepository fieldRepository;
+    private final EntryRepository fieldRepository;
 
     @Override
     public Map<String, Object> addEntries(String inputNumber) {
@@ -33,7 +33,7 @@ public class EntriesServiceImpl implements EntriesService {
         log.info("Число " + outputNumber + " принято");
 
         for (int temp = 1; temp <= outputNumber; temp++) {
-            Field field = new Field();
+            Entry field = new Entry();
             field.setField(temp);
             fieldRepository.save(field);
         }
@@ -44,4 +44,5 @@ public class EntriesServiceImpl implements EntriesService {
         log.info("Числа c 1 до " + outputNumber + " записаны за " + (finish - start) + "ms");
         return response;
     }
+
 }
